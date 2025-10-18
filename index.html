@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertitore Filati</title>
+    
+    <!-- ********************************************** -->
+    <!-- METADATI PWA ESSENZIALI -->
+    <!-- ********************************************** -->
+    
+    <meta name="apple-mobile-web-app-title" content="Filati Conv">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#06b6d4"> 
+    
+    <!-- Icona (SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23374151' rx='20'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='%2306b6d4' stroke-width='8'/%3E%3Cpath d='M35 35 L65 65 M65 35 L35 65' stroke='%2306b6d4' stroke-width='6' stroke-linecap='round'/%E3%83%BC%3Ctext x='50' y='60' font-family='Arial, sans-serif' font-size='18' fill='white' text-anchor='middle'%3ECV%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADGm5HMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFE0lEQVR4nO2da6hVVRSAv7x7FzPNTB/10cR8TTE1+oV9iV76hH0iT5QyC6P6WfphFkYQhSWr6t8wM8sH8QeK2YlFmHk19p849tH5F4sYJ4OiiCgKqfL+vWfuvWftn/vM2j5n77X33HPWuuX/a0Q0y9r9C1gN/AacC2wCdgNrgfOa6TfB9eBP4HPgeuA48DbwIXA08BrQyq0662D1FvAIsBlYAnwKTAJ/DnxjA90DPAv8ALwIvAw8DXxH10tQx9r9e5XwFHA10N50Yg/wNTAz+N9xL+C1oOdp18xY83q0u8D9wE7ge+C5/3vL9221P42p/0uBlQCTwJpAZeC+9n8c7H8V/g1gD/Ah8AswGXgiPZfA6hD3A88DjwV+C7wO7AP+DfwA/Bw4L/B74MNAE38Bvgc4Efg98CfwF/A34GPgn8BPgC4DfQAtp4/A7kAfA5kAJ9J3+A/gXwKTAA9p/u/Jqf9tQD/AhcBG4HLgf+BvwE+B/wADgA+CdwG/gn8Gvgo8DvwZ+CLwP/Bb4LPA78FnkP+CLwO/B55B/wE3kP+C6e+/zV9p7/Nf2v3z/p/4v/b+DnwI/BN5l/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4ju B80n7DfwP3Ad8D/A68DfwXv9+D+f4gAAAAASUVORK5CYII=">
+    
+    <!-- ********************************************** -->
+    <!-- MANIFEST E SERVICE WORKER EMBEDDED -->
+    <!-- ********************************************** -->
+    <script>
+        // Definizione del Manifest PWA in JS (per la registrazione dinamica)
+        const PWA_MANIFEST = {
+            name: "Convertitore Filati",
+            short_name: "Filati Conv",
+            description: "Convertitore professionale per titoli di filati (dTex, Den, Nm, Ne).",
+            start_url: ".",
+            display: "standalone",
+            background_color: "#374151",
+            theme_color: "#06b6d4",
+            icons: [
+                {
+                    // L'icona è già definita come data URL nell'HTML per semplicità
+                    src: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADGm5HMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFE0lEQVR4nO2da6hVVRSAv7x7FzPNTB/10cR8TTE1+oV9iV76hH0iT5QyC6P6WfphFkYQhSWr6t8wM8sH8QeK2YlFmHk19p849tH5F4sYJ4OiiCgKqfL+vWfuvWftn/vM2j5n77X33HPWuuX/a0Q0y9r9C1gN/AacC2wCdgNrgfOa6TfB9eBP4HPgeuA48DbwIXA08BrQyq0662D1FvAIsBlYAnwKTAJ/DnxjA90DPAv8ALwIvAw8DXxH10tQx9r9e5XwFHA10N50Yg/wNTAz+N9xL+C1oOdp18xY83q0u8D9wE7ge+C5/3vL9221P42p/0uBlQCTwJpAZeC+9n8c7H8V/g1gD/Ah8AswGXgiPZfA6hD3A88DjwV+C7wO7AP+DfwA/Bw4L/B74MNAE38Bvgc4Efg98CfwF/A34GPgn8BPgC4DfQAtp4/A7kAfA5kAJ9J3+A/gXwKTAA9p/u/Jqf9tQD/AhcBG4HLgf+BvwE+B/wADgA+CdwG/gn8Gvgo8DvwZ+CLwP/Bb4LPA78FnkP+CLwO/B55B/wE3kP+C6e+/zV9p7/Nf2v3z/p/4v/b+DnwI/BN5l/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4juBf8R3An+I7gX/EdwJ/iK4E/xHcCf4ju B80n7DfwP3Ad8D/A68DfwXv9+D+f4gAAAAASUVORK5CYII=",
+                    sizes: "192x192",
+                    type: "image/png"
+                }
+            ]
+        };
+
+        let deferredPrompt = null; 
+
+        // 1. Gestione del prompt di installazione PWA
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Mostra il pulsante di installazione solo se l'evento è stato catturato
+            document.getElementById('installButton').style.display = 'block';
+            console.log('Prompt di installazione PWA catturato. Il pulsante è ora visibile.');
+        });
+        
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Installazione PWA accettata.');
+                    } else {
+                        console.log('Installazione PWA rifiutata.');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installButton').style.display = 'none';
+                });
+            }
+        }
+
+        // 2. Registrazione del Service Worker (risoluzione del bug V15)
+        function registerPWAWorker() {
+            if ('serviceWorker' in navigator) {
+                // Il Service Worker minimo richiesto per soddisfare i criteri PWA
+                const swCode = "self.addEventListener('fetch', function(event) { return; }); self.addEventListener('install', function(event) { self.skipWaiting(); }); self.addEventListener('activate', function(event) { event.waitUntil(self.clients.claim()); });";
+                
+                const swBlob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(swBlob);
+
+                navigator.serviceWorker.register(swUrl, { scope: './' })
+                    .then(registration => {
+                        console.log('Service Worker registrato con successo.');
+                    })
+                    .catch(error => {
+                        console.error('Registrazione Service Worker fallita (previsto se su file://):', error);
+                    });
+            }
+        }
+
+        // 3. Imposta il manifest dinamico
+        function setManifest() {
+             const link = document.createElement('link');
+             link.rel = 'manifest';
+             link.href = 'data:application/json;charset=UTF-8,' + encodeURIComponent(JSON.stringify(PWA_MANIFEST));
+             document.head.appendChild(link);
+        }
+
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', () => {
+             setManifest();
+             registerPWAWorker();
+        });
+
+    </script>
+
+    <!-- Carica Tailwind CSS per uno stile responsive e moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Dark Theme & Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1f2937; /* Grigio scuro / bluastro */
+            color: #f3f4f6;
+            padding-top: 1rem; 
+            padding-bottom: 1rem; /* Padding base in fondo per visibilità */
+        }
+        .container-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 1rem; 
+        }
+        /* Stile del container dell'app */
+        .app-body {
+            /* Sfondo del corpo e della tastiera unificati */
+            background-color: #374151; 
+            border: 1px solid #4b5563;
+        }
+        /* Stile di input */
+        .input-group input {
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #4b5563;
+            color: #f3f4f6;
+            border: 1px solid #6b7280;
+            cursor: pointer; 
+            height: 56px; 
+        }
+        /* Focus state: accento Ciano Tech */
+        .input-group input.active-input {
+            outline: none;
+            border-color: #06b6d4; /* Ciano brillante */
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Stili per la tastiera custom - ORA IN LINEA CON IL CONTENUTO */
+        #custom-keypad {
+            background-color: #374151; /* Uguale al corpo principale */
+            padding: 10px;
+            z-index: 100;
+        }
+        #custom-keypad button {
+            background-color: #4b5563;
+            color: #f3f4f6;
+            font-size: 2.2rem; 
+            padding: 18px 0; 
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #custom-keypad button:hover {
+            background-color: #5a6470;
+        }
+        /* Stili per tasti azione */
+        #custom-keypad button.key-action {
+            background-color: #06b6d4; 
+            color: white;
+            font-size: 1.5rem; 
+        }
+        #custom-keypad button.key-action:hover {
+            background-color: #0ea5e9;
+        }
+        /* Stili per tasto delete */
+        #custom-keypad button.key-delete {
+            background-color: #ef4444; 
+            color: white;
+            font-size: 2.5rem; 
+        }
+        #custom-keypad button.key-delete:hover {
+            background-color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-card">
+
+        <!-- UNICO CONTENITORE: Contiene Header, Inputs e Tastiera -->
+        <div id="converterApp" class="w-full app-body shadow-2xl rounded-xl overflow-hidden">
+            
+            <!-- Testata con accento Ciano (Header) -->
+            <header class="w-full text-center bg-cyan-700 p-4 shadow-lg">
+                <h1 class="text-3xl font-extrabold tracking-wide text-white">CONVERTITORE FILATI</h1>
+            </header>
+
+            <!-- Pulsante di Installazione PWA (Inizialmente Nascosto) -->
+            <button id="installButton" onclick="installApp()" style="display:none;"
+                    class="w-full py-4 bg-lime-600 hover:bg-lime-500 text-white font-bold text-lg shadow-xl transform hover:scale-[1.005] transition duration-150 ease-in-out">
+                ⬇️ Installa App su Home
+            </button>
+
+
+            <!-- Corpo dell'app con input e reset -->
+            <div class="p-6 md:p-8">
+                <p class="text-gray-300 mb-6 text-center text-sm">
+                    Tocca un campo per attivarlo e usa la tastiera virtuale in basso.
+                </p>
+
+                <!-- LAYOUT 2x2 A GRIGLIA -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-6 mb-8">
+                    
+                    <!-- DECITEX (dTex) -->
+                    <div class="input-group">
+                        <label for="dtexInput" class="block text-xs font-medium text-cyan-400 mb-1">Decitex (dTex)</label>
+                        <input type="text" id="dtexInput" readonly
+                               onfocus="setActiveInput(this)" onclick="setActiveInput(this)"
+                               class="w-full p-3 border rounded-lg text-lg placeholder-gray-500 font-mono text-right">
+                    </div>
+
+                    <!-- DENARI -->
+                    <div class="input-group">
+                        <label for="denierInput" class="block text-xs font-medium text-cyan-400 mb-1">Denari (Den)</label>
+                        <input type="text" id="denierInput" readonly
+                               onfocus="setActiveInput(this)" onclick="setActiveInput(this)"
+                               class="w-full p-3 border rounded-lg text-lg placeholder-gray-500 font-mono text-right">
+                    </div>
+
+                    <!-- NUMERO METRICO (NM) -->
+                    <div class="input-group">
+                        <label for="nmInput" class="block text-xs font-medium text-cyan-400 mb-1">Numero Metrico (Nm)</label>
+                        <input type="text" id="nmInput" readonly
+                               onfocus="setActiveInput(this)" onclick="setActiveInput(this)"
+                               class="w-full p-3 border rounded-lg text-lg placeholder-gray-500 font-mono text-right">
+                    </div>
+
+                    <!-- NUMERO INGLESE (NE) -->
+                    <div class="input-group">
+                        <label for="neInput" class="block text-xs font-medium text-cyan-400 mb-1">Numero Inglese (Ne)</label>
+                        <input type="text" id="neInput" readonly
+                               onfocus="setActiveInput(this)" onclick="setActiveInput(this)"
+                               class="w-full p-3 border rounded-lg text-lg placeholder-gray-500 font-mono text-right">
+                    </div>
+                    
+                    <!-- Pulsante Reset Campi - ORA OCCUPA 2 COLONNE -->
+                    <button onclick="clearAll()" class="col-span-2 mt-2 w-full py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-lg shadow-xl transform hover:scale-[1.005] transition duration-150 ease-in-out">
+                        Reset Campi
+                    </button>
+
+                </div>
+            </div>
+            
+            <!-- TASTIERA NUMERICA CUSTOM - PARTE INTEGRANTE DEL CONTENITORE -->
+            <div id="custom-keypad">
+                <div class="grid grid-cols-4 gap-2">
+                    <!-- Row 1 -->
+                    <button onclick="customKeyPress('7')">7</button>
+                    <button onclick="customKeyPress('8')">8</button>
+                    <button onclick="customKeyPress('9')">9</button>
+                    <button onclick="customDelete()" class="key-delete">←</button>
+
+                    <!-- Row 2 -->
+                    <button onclick="customKeyPress('4')">4</button>
+                    <button onclick="customKeyPress('5')">5</button>
+                    <button onclick="customKeyPress('6')">6</button>
+                    <button onclick="clearAll()" class="key-action text-sm">CANC</button>
+
+                    <!-- Row 3 -->
+                    <button onclick="customKeyPress('1')">1</button>
+                    <button onclick="customKeyPress('2')">2</button>
+                    <button onclick="customKeyPress('3')">3</button>
+                    <button onclick="customDecimal()" class="key-action">,</button>
+
+                    <!-- Row 4 (Ultima fila: 0, CONV) -->
+                    <button onclick="customKeyPress('0')" class="col-span-3">0</button>
+                    <button onclick="customEnter()" class="key-action text-sm">CONV</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // Mappa degli elementi di input
+        const inputs = {
+            dTex: document.getElementById('dtexInput'),
+            Den: document.getElementById('denierInput'),
+            Nm: document.getElementById('nmInput'),
+            Ne: document.getElementById('neInput')
+        };
+        
+        // Stato per tracciare il campo attivo
+        let activeInput = null;
+
+        // Costanti di conversione chiave
+        const DTEX_TO_DENIER = 0.9;
+        const NE_TO_NM = 1.693;
+        
+        // --- LOGICA INTERFACCIA ---
+
+        function setActiveInput(element) {
+            // Rimuove la classe attiva da tutti i campi
+            document.querySelectorAll('.input-group input').forEach(input => {
+                input.classList.remove('active-input');
+            });
+
+            // Imposta l'input attivo e aggiunge la classe
+            activeInput = element;
+            activeInput.classList.add('active-input');
+        }
+        
+        function customKeyPress(key) {
+            if (!activeInput) {
+                // Se nessun campo è attivo, imposta il primo campo come predefinito
+                setActiveInput(inputs.dTex);
+            }
+
+            // Limita a 15 cifre totali per evitare overflow
+            if (activeInput.value.length >= 15) return;
+
+            // Aggiunge la chiave e aggiorna la conversione
+            activeInput.value += key;
+            triggerConversion();
+        }
+
+        function customDecimal() {
+            if (!activeInput) {
+                setActiveInput(inputs.dTex);
+            }
+
+            // Usa la virgola per l'input utente (convenzione italiana)
+            const separator = ',';
+
+            // Permette di aggiungere la virgola solo se non è già presente
+            if (!activeInput.value.includes(separator)) {
+                // Se è vuoto, inizia con "0,"
+                if (activeInput.value === '') {
+                    activeInput.value = '0' + separator;
+                } else {
+                    activeInput.value += separator;
+                }
+                triggerConversion();
+            }
+        }
+
+        function customDelete() {
+            if (!activeInput || activeInput.value.length === 0) return;
+
+            activeInput.value = activeInput.value.slice(0, -1);
+            triggerConversion();
+        }
+
+        function customEnter() {
+            // Funzione di "Invio" simulato: mantiene il focus
+            if (activeInput) {
+                activeInput.focus();
+            }
+        }
+        
+        function triggerConversion() {
+            if (!activeInput) return;
+            
+            // Trova l'unità attiva basandosi sull'ID del campo
+            const fromUnit = Object.keys(inputs).find(key => inputs[key] === activeInput);
+            
+            // Sostituisce la virgola con il punto per il calcolo
+            const cleanValue = activeInput.value.replace(',', '.');
+            
+            convert(cleanValue, fromUnit);
+        }
+
+        // --- LOGICA CONVERSIONE ---
+
+        function convert(inputValue, fromUnit) {
+            const value = parseFloat(inputValue);
+
+            if (isNaN(value) || value <= 0) {
+                clearOtherInputs(fromUnit);
+                return;
+            }
+
+            let calculated = {};
+            let dTexValue;
+
+            // 1. Converti a DTEX (il "ponte" di conversione)
+            switch (fromUnit) {
+                case 'dTex':
+                    dTexValue = value;
+                    break;
+                case 'Den':
+                    dTexValue = value / DTEX_TO_DENIER;
+                    break;
+                case 'Nm':
+                    dTexValue = 10000 / value;
+                    break;
+                case 'Ne':
+                    const nmFromNe = value * NE_TO_NM;
+                    dTexValue = 10000 / nmFromNe;
+                    break;
+            }
+
+            // 2. Calcola tutti gli altri titoli da DTEX
+            calculated.dTex = dTexValue;
+            calculated.Den = dTexValue * DTEX_TO_DENIER;
+            calculated.Nm = 10000 / dTexValue;
+            calculated.Ne = calculated.Nm / NE_TO_NM;
+
+            // 3. Aggiorna i campi (tranne quello da cui si è partiti)
+            for (const unit in inputs) {
+                if (unit !== fromUnit && calculated[unit] && calculated[unit] > 0) {
+                    // Visualizza i risultati con la virgola e 3 cifre decimali
+                    const formattedValue = calculated[unit].toFixed(3).replace('.', ',');
+                    inputs[unit].value = formattedValue;
+                } else if (unit !== fromUnit && calculated[unit] <= 0) {
+                     inputs[unit].value = '';
+                }
+            }
+        }
+
+        function clearOtherInputs(excludeUnit = null) {
+            for (const unit in inputs) {
+                if (unit !== excludeUnit) {
+                    inputs[unit].value = '';
+                }
+            }
+        }
+
+        function clearAll() {
+             for (const unit in inputs) {
+                inputs[unit].value = '';
+                inputs[unit].classList.remove('active-input');
+            }
+            activeInput = null;
+        }
+
+        // Inizializza l'interfaccia all'avvio: imposta il primo campo come attivo
+        window.onload = function() {
+            // Simula un click sul primo campo per attivare il focus e lo stile
+            setActiveInput(inputs.dTex);
+        }
+
+    </script>
+</body>
+</html>
+
